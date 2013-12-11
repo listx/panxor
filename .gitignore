@@ -1,0 +1,12 @@
+*.o
+*.hi
+
+*.aux
+*.log
+*.out
+*.pdf
+*.toc
+
+panxor
+doc/watch
+doc/panxor-versioned.tex
