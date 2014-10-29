@@ -27,6 +27,7 @@ data Opts = Opts
 	, out_dec :: Bool
 	, out_oct :: Bool
 	, out_bin :: Bool
+	, min_length :: Int
 	} deriving (Data, Typeable, Show, Eq)
 
 progOpts :: Opts
@@ -44,11 +45,15 @@ progOpts = Opts
 	, out_dec = False &= help "Output the final hash in decimal."
 	, out_oct = False &= help "Output the final hash in octal."
 	, out_bin = False &= help "Output the final hash in binary."
+	, min_length = 0 &= help "Output length must be at least INT long (if output is lesser than this length, then the leading digits are padded with 0). Default is 0."
 	}
 	&= details
 		[ "Notes:"
 		, ""
 		, "  Panxor can read in any arbitrarily long hex, decimal, or binary string, and is also compatible with the sha1sum(1) format."
+		, "Examples:"
+		, "  Use sha1sum(1) against some files, and then xor all of those hashes into one (note the use of --min-length to ensure that the output 'hash' is also always 40 digits long):"
+		, "    sha1sum my_files or_folders | panxor --stdin-hex --min-length 40"
 		]
 
 getOpts :: IO Opts
@@ -139,7 +144,7 @@ prog Opts{..} stdinHashHex filesHex filesDec filesOct filesBin = do
 			++ hashesOct
 			++ hashesBin
 			)
-	putStrLn $ showStyle hash []
+	putStrLn . padZeros $ showStyle hash []
 	where
 	showStyle :: (Integral a, Show a) => a -> ShowS
 	showStyle
@@ -148,6 +153,14 @@ prog Opts{..} stdinHashHex filesHex filesDec filesOct filesBin = do
 		| out_oct = showOct
 		| out_bin = showIntAtBase 2 intToDigit
 		| otherwise = showHex
+	padZeros :: String -> String
+	padZeros str
+		| min_length > 0 = replicate padLen '0' ++ str
+		| otherwise = str
+		where
+		padLen
+			| min_length > length str = min_length - length str
+			| otherwise = 0
 
 data NumBase
 	= NumHex
