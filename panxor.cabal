@@ -1,0 +1,22 @@
+name: panxor
+version: 0.0.0.0
+synopsis: A utility to XOR hash checksums
+license: FreeBSD
+license-file: LICENSE
+author: Linus Arver
+maintainer: linusarver@gmail.com
+category: Utility
+build-type: Simple
+cabal-version: >=1.10
+
+executable panxor
+  main-is: panxor.lhs
+  default-language: Haskell2010
+  default-extensions:
+      DeriveDataTypeable
+    , RecordWildCards
+  hs-source-dirs: src
+  build-depends:
+      base >= 4.7 && < 4.8
+    , cmdargs >= 0.10.7 && < 0.11
+    , directory >= 1.2.1.0 && < 1.3

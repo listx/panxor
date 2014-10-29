@@ -10,3 +10,6 @@
 panxor
 doc/watch
 doc/panxor-versioned.tex
+dist
+.cabal-sandbox
+cabal.sandbox.config
