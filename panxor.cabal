@@ -1,5 +1,5 @@
 name: panxor
-version: 0.0.0.0
+version: 0.1.0.0
 synopsis: numerically XOR multiple hex, decimal, octal, or binary values
 license: FreeBSD
 license-file: LICENSE
