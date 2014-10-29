@@ -72,8 +72,8 @@ _PROGRAM_NAME
 _PROGRAM_NAME = "panxor"
 _PROGRAM_VERSION = "0.0.2"
 _PROGRAM_INFO = _PROGRAM_NAME ++ " version " ++ _PROGRAM_VERSION
-_PROGRAM_DESC = "binary XOR multiple hex, decimal, octal, or binary values"
-_COPYRIGHT = "(C) Linus Arver 2012"
+_PROGRAM_DESC = "numerically XOR multiple hex, decimal, octal, or binary values"
+_COPYRIGHT = "(C) Linus Arver 2012-2014"
 
 argsCheck :: Opts -> IO Int
 argsCheck Opts{..}
