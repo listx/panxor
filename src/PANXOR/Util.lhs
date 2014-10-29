@@ -1,3 +1,4 @@
+\section{PANXOR.Util}
 \begin{code}
 {-# LANGUAGE RecordWildCards #-}
 module PANXOR.Util where

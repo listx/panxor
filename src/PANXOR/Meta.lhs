@@ -1,3 +1,4 @@
+\section{PANXOR.Meta}
 \begin{code}
 module PANXOR.Meta where
 

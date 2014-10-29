@@ -1,3 +1,4 @@
+\section{PANXOR.Core}
 \begin{code}
 {-# LANGUAGE DeriveDataTypeable #-}
 {-# LANGUAGE RecordWildCards #-}
